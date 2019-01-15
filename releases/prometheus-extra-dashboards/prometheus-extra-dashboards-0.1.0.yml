@@ -1,0 +1,9 @@
+name: prometheus-extra-dashboards
+version: 0.1.0
+commit_hash: 427c29d
+uncommitted_changes: true
+jobs:
+- name: micrometer_dashboards
+  version: b37c1243b9b820f8340acaa14c4baceaca45842c
+  fingerprint: b37c1243b9b820f8340acaa14c4baceaca45842c
+  sha1: 8a0ef601ce4bf0f476b2a51925ba773277eee825
