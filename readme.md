@@ -6,7 +6,7 @@ this boshrelease is useful addon for [prometheus-boshrelease](https://github.com
 add prometheus-extra-dashboards-boshrelease/ops-files to prometheus-boshrelease.  
 ```
 bosh -d prometheus deploy prometheus-boshrelease/manifests/prometheus.yml \
--o ops-files/prometheus-elasticsearch-static-config.yml \
+-o prometheus-extra-dashboards-boshrelease/ops-files/monitor-micrometer.yml \
 --no-redact
 
 ```
