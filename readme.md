@@ -21,4 +21,4 @@ bosh -d prometheus deploy prometheus-boshrelease/manifests/prometheus.yml \
 Apache 2.0 License
 
 ## Special Thanks
-[making](https://github.com/making)
+[making](https://github.com/making) donate an micrometer dashboards.
