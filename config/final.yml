@@ -1,0 +1,5 @@
+name: prometheus-extra-dashboards
+blobstore:
+  provider: local
+  options:
+    blobstore_path: blobstore
