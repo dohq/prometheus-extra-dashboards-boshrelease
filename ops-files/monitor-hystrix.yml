@@ -1,0 +1,16 @@
+# micrometer Dashboards
+- type: replace
+  path: /releases/-
+  value:
+    name: prometheus-extra-dashboards
+    version: latest
+
+- type: replace
+  path: /instance_groups/name=grafana/jobs/-
+  value:
+    name: hystrix_dashboards
+    release: prometheus-extra-dashboards
+
+- type: replace
+  path: /instance_groups/name=grafana/jobs/name=grafana/properties/grafana/prometheus/dashboard_folders/name=Micrometer?/files/-
+  value: /var/vcap/jobs/hystrix_dashboards/*.json
