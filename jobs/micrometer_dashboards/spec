@@ -2,7 +2,6 @@
 name: micrometer_dashboards
 
 templates:
-  micrometer_hystrix.json: micrometer_hystrix.json
   micrometer_summary.json: micrometer_summary.json
 
 packages: []
