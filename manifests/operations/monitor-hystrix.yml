@@ -1,10 +1,4 @@
-# hystrix Dashboards
-- type: replace
-  path: /releases/-
-  value:
-    name: prometheus-extra-dashboards
-    version: latest
-
+# Hystrix Dashboards
 - type: replace
   path: /instance_groups/name=grafana/jobs/-
   value:

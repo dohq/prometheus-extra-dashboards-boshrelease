@@ -1,4 +1,5 @@
 - type: replace
-  path: /releases?/name=prometheus-extra-dashboards/
+  path: /releases/-
   value:
+    name: prometheus-extra-dashboards
     version: 1.0.0
