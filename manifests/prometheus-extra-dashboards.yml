@@ -1,0 +1,4 @@
+- type: replace
+  path: /releases?/name=prometheus-extra-dashboards/
+  value:
+    version: 1.0.1

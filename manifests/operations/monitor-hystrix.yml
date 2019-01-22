@@ -1,4 +1,4 @@
-# micrometer Dashboards
+# hystrix Dashboards
 - type: replace
   path: /releases/-
   value:

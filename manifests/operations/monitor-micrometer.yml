@@ -1,11 +1,5 @@
 # micrometer Dashboards
 - type: replace
-  path: /releases/-
-  value:
-    name: prometheus-extra-dashboards
-    version: latest
-
-- type: replace
   path: /instance_groups/name=grafana/jobs/-
   value:
     name: micrometer_dashboards
