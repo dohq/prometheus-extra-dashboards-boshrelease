@@ -2,4 +2,4 @@
   path: /releases/-
   value:
     name: prometheus-extra-dashboards
-    version: 1.0.0
+    version: 1.0.2
