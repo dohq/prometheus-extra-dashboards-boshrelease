@@ -93,6 +93,11 @@ echo "$git_changes"
 # Bump to manifest
 echo "* Auto Bump Version manifest to $version"
 sed -i -e "s/version:.*/version: $version/g" $MAIN_MANIFEST
+git add $MAIN_MANIFEST
+git commit -m "[mod] Bump version to v$version"
+
+# tagging
+git tag v$version
 
 # Uploading blobs
 echo "* Uploading blobs to the blobstore ..."
@@ -112,8 +117,7 @@ fi
 
 # Create a new tag and update the changes
 echo "* Commiting git changes ..."
-git tag v$version
-git add .final_builds releases/$RELEASE/index.yml "releases/$RELEASE/$RELEASE-$version.yml" blobstore $MAIN_MANIFEST
+git add .final_builds releases/$RELEASE/index.yml "releases/$RELEASE/$RELEASE-$version.yml" blobstore
 git commit -m "$RELEASE v$version Boshrelease"
 git push
 git push --tags
