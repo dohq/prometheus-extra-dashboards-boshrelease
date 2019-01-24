@@ -1,0 +1,17 @@
+name: prometheus-extra-dashboards
+version: 1.1.4
+commit_hash: 452eacb
+uncommitted_changes: false
+jobs:
+- name: cloudfoundry_custom_dashboards
+  version: aae6dfa1782e64b9e734e95080e540686dcc2223
+  fingerprint: aae6dfa1782e64b9e734e95080e540686dcc2223
+  sha1: a35d6387d51001d3324575556cd341933834bfd0
+- name: hystrix_dashboards
+  version: d9c7a86efb7f12f6b19774f0d658f74e75a44815
+  fingerprint: d9c7a86efb7f12f6b19774f0d658f74e75a44815
+  sha1: e7154d1d840a4ffa16c0d54410351738add0e862
+- name: micrometer_dashboards
+  version: 9d88589cad368b09221b336333a1e7dddd49912e
+  fingerprint: 9d88589cad368b09221b336333a1e7dddd49912e
+  sha1: 55a7124e2d803acf5be1d2001463c4c8a4446a96
