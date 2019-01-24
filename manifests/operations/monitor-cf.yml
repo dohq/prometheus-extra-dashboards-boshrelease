@@ -6,5 +6,5 @@
     release: prometheus-extra-dashboards
 
 - type: replace
-  path: /instance_groups/name=grafana/jobs/name=grafana/properties/grafana/prometheus/dashboard_folders/name=Cloudfundry?/files/-
+  path: /instance_groups/name=grafana/jobs/name=grafana/properties/grafana/prometheus/dashboard_folders/name=Cloudfoundry?/files/-
   value: /var/vcap/jobs/cloudfoundry_custom_dashboards/*.json
