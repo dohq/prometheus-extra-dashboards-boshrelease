@@ -91,7 +91,8 @@ fi
 echo "$git_changes"
 
 # Bump to manifest
-sed -e "s/VERSION:.*/$1/g" $MAIN_MANIFEST
+echo "* New Version Main manifest"
+sed -i -e "s/version:.*/version: $version/g" $MAIN_MANIFEST
 
 # Uploading blobs
 echo "* Uploading blobs to the blobstore ..."
