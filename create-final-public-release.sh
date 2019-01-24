@@ -9,6 +9,9 @@ RELEASE="prometheus-extra-dashboards"
 DESCRIPTION="BOSH release add-on for prometheus-boshrelease to add custom resources: alerts, dashboards, etc"
 GITHUB_REPO="dohq/prometheus-extra-dashboards-boshrelease"
 
+##
+MAIN_MANIFEST="manifests/prometheus-extra-dashboards.yml"
+
 ###
 
 BOSH_CLI=${BOSH_CLI:-bosh}
@@ -87,6 +90,9 @@ then
 fi
 echo "$git_changes"
 
+# Bump to manifest
+sed -e "s/VERSION:.*/$1/g" $MAIN_MANIFEST
+
 # Uploading blobs
 echo "* Uploading blobs to the blobstore ..."
 $BOSH_CLI upload-blobs
@@ -105,7 +111,7 @@ fi
 
 # Create a new tag and update the changes
 echo "* Commiting git changes ..."
-git add .final_builds releases/$RELEASE/index.yml "releases/$RELEASE/$RELEASE-$version.yml" blobstore
+git add .final_builds releases/$RELEASE/index.yml "releases/$RELEASE/$RELEASE-$version.yml" blobstore $MAIN_MANIFEST
 git commit -m "$RELEASE v$version Boshrelease"
 git push
 git push --tags
