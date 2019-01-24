@@ -1,0 +1,11 @@
+---
+name: cloudfoundry_custom_dashboards
+
+templates:
+  cf_apps_latency_custom.json: cf_apps_latency_custom.json
+  cf_apps_requests_custom.json: cf_apps_requests_custom.json
+  cf_apps_system_custom.json: cf_apps_system_custom.json
+
+packages: []
+
+properties: {}
