@@ -69,15 +69,6 @@ case $# in
                 exit 1
             fi
             echo "*** Creating a new release. Using release version number $version."
-            # # Bump to manifest
-            # echo "* Auto Bump Version manifest to $version"
-            # sed -i -e "s/version:.*/version: $version/g" $MAIN_MANIFEST
-            # git add $MAIN_MANIFEST
-            # git commit -m "[mod] Bump version to v$version"
-            #
-            # # tagging
-            # git tag v$version
-
         fi
         ;;
     *)
@@ -98,6 +89,16 @@ then
     exit 1
 fi
 echo "$git_changes"
+
+# Bump to manifest
+echo "* Auto Bump Version manifest to $version"
+sed -i -e "s/version:.*/version: $version/g" $MAIN_MANIFEST
+git add $MAIN_MANIFEST
+git commit -m "[mod] Bump version to v$version"
+
+# tagging
+git tag v$version
+
 
 # Uploading blobs
 echo "* Uploading blobs to the blobstore ..."
