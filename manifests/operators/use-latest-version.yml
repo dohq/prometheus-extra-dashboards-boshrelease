@@ -1,0 +1,3 @@
+- type: replace
+  path: /releases/name=prometheus-extra-dashboards/version
+  value: latest

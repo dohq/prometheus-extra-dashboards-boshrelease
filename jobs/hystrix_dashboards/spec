@@ -1,0 +1,9 @@
+---
+name: hystrix_dashboards
+
+templates:
+  micrometer_hystrix.json: micrometer_hystrix.json
+
+packages: []
+
+properties: {}

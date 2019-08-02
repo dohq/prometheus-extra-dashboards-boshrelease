@@ -1,0 +1,9 @@
+---
+name: micrometer_dashboards
+
+templates:
+  micrometer_summary.json: micrometer_summary.json
+
+packages: []
+
+properties: {}
