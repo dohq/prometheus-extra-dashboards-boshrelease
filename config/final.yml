@@ -1,4 +1,4 @@
-name: prometheus-extra-dashboards-boshrelease
+name: prometheus-extra-dashboards
 blobstore:
   provider: local
   options:
