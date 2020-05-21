@@ -1,0 +1,9 @@
+---
+name: resilience4j_dashboards
+
+templates:
+  micrometer_resilience4j.json: micrometer_resilience4j.json
+
+packages: []
+
+properties: {}

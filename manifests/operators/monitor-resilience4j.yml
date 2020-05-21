@@ -1,0 +1,10 @@
+# resilience4j Dashboards
+- type: replace
+  path: /instance_groups/name=grafana/jobs/-
+  value:
+    name: resilience4j_dashboards
+    release: prometheus-extra-dashboards
+
+- type: replace
+  path: /instance_groups/name=grafana/jobs/name=grafana/properties/grafana/prometheus/dashboard_folders/name=Micrometer?/files/-
+  value: /var/vcap/jobs/resilience4j_dashboards/*.json
