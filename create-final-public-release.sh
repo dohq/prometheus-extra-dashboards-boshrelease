@@ -12,6 +12,9 @@ GITHUB_REPO="dohq/prometheus-extra-dashboards-boshrelease"
 ##
 MAIN_MANIFEST="manifests/prometheus-extra-dashboards.yml"
 
+##
+LATEST_TAG="git describe --tags $(git rev-list --tags --max-count=1) | tr -d v"
+
 ###
 
 BOSH_CLI=${BOSH_CLI:-bosh}
@@ -64,7 +67,7 @@ echo "$git_changes"
 
 # Bump to manifest
 echo "* Auto Bump Version manifest to $version"
-sed -i -e "s/version:.*/version: $version/g" $MAIN_MANIFEST
+sed -i -e "s/$LATEST_TAG/$version/g" $MAIN_MANIFEST
 git add $MAIN_MANIFEST
 git commit -m "[mod] Bump version to v$version"
 
@@ -88,16 +91,19 @@ else
     $BOSH_CLI create-release --force --final --tarball="/tmp/$RELEASE-$$.tgz" --name "$RELEASE" --version "$version"
 fi
 
+# Bump Manifests
+sha1_sum=$($SHA1 "/tmp/$RELEASE-$$.tgz" | cut -d' ' -f1)
+sed -i -e "s/sha1:.*/sha1: $sha1_sum/g" $MAIN_MANIFEST
+
 # Create a new tag and update the changes
 echo "* Commiting git changes ..."
-git add .final_builds releases/$RELEASE/index.yml "releases/$RELEASE/$RELEASE-$version.yml" final_blobs
+git add $MAIN_MANIFEST .final_builds releases/$RELEASE/index.yml "releases/$RELEASE/$RELEASE-$version.yml" final_blobs
 git commit -m "$RELEASE v$version Boshrelease"
 git push
 git push --tags
 
 # Create a release in Github
 echo "* Creating a new release in Github ... "
-sha1=$($SHA1 "/tmp/$RELEASE-$$.tgz" | cut -d' ' -f1)
 description=$(cat <<EOF
 # $RELEASE version $version
 
@@ -113,7 +119,7 @@ $git_changes
     - name: $RELEASE
       url: https://github.com/${GITHUB_REPO}/releases/download/v${version}/${RELEASE}-${version}.tgz
       version: $version
-      sha1: $sha1
+      sha1: $sha1_sum
 EOF
 )
 printf -v DATA '{"tag_name": "v%s","target_commitish": "master","name": "v%s","body": %s,"draft": false, "prerelease": false}' "$version" "$version" "$(echo "$description" | $JQ -R -s '@text')"
